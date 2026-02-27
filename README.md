@@ -105,7 +105,7 @@ invest-simulator/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/invest-simulator.git
+git clone https://github.com/akashsuryawanshi04/invest-simulator.git
 cd invest-simulator/frontend
 
 # 2. Install dependencies
@@ -126,7 +126,7 @@ npm run dev
 
 ```bash
 # Clone and run everything
-git clone https://github.com/YOUR_USERNAME/invest-simulator.git
+git clone https://github.com/akashsuryawanshi04/invest-simulator.git
 cd invest-simulator
 
 docker-compose up -d
