@@ -1,0 +1,93 @@
+version: '3.8'
+
+# ============================================================
+# InvestSimulator — Full Stack Docker Compose
+# Runs: MySQL + Spring Boot Backend + React Frontend
+#
+# Usage:
+#   docker-compose up -d          # Start all services
+#   docker-compose logs -f        # Watch logs
+#   docker-compose down           # Stop all services
+#   docker-compose down -v        # Stop + delete DB data
+# ============================================================
+
+services:
+
+  # ---- MySQL Database ----
+  mysql:
+    image: mysql:8.0
+    container_name: invest-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: invest123
+      MYSQL_DATABASE: invest_simulator
+      MYSQL_USER: investapp
+      MYSQL_PASSWORD: investapp123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pinvest123"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - invest-network
+
+  # ---- Spring Boot Backend ----
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: invest-backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/invest_simulator?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: invest123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      APP_JWT_SECRET: InvestSimulatorSuperSecretKeyForJWT256BitsProduction12345678
+      APP_CORS_ALLOWED_ORIGINS: http://localhost:5173,http://localhost:3000
+      APP_SIMULATION_PRICE_UPDATE_INTERVAL_MS: 5000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - invest-network
+
+  # ---- React Frontend (Dev) ----
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: invest-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8080/api
+    volumes:
+      - ./frontend/src:/app/src:ro  # Hot reload in dev
+    networks:
+      - invest-network
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  invest-network:
+    driver: bridge

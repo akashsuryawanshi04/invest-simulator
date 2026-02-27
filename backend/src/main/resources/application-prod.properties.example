@@ -1,0 +1,18 @@
+# ============================================================
+# PRODUCTION PROFILE — application-prod.properties
+# Copy this to application-prod.properties and set via env vars
+# ============================================================
+
+# Use environment variables in production:
+# export DB_URL="jdbc:mysql://your-rds:3306/invest_simulator"
+# export DB_USER="investapp"
+# export DB_PASS="strongpassword"
+# export JWT_SECRET="your-256bit-production-secret"
+
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USER}
+spring.datasource.password=${DB_PASS}
+spring.jpa.hibernate.ddl-auto=validate
+app.jwt.secret=${JWT_SECRET}
+app.cors.allowed-origins=${CORS_ORIGINS:https://yourdomain.com}
+logging.level.com.investsimulator=WARN
