@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![InvestSimulator Banner](docs/banner.png)
+![InvestSimulator Banner](docs/banner.jpg)
 
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev)
