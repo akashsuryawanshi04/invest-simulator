@@ -46,22 +46,22 @@
 > *Dark terminal-gold aesthetic inspired by Bloomberg Terminal & Zerodha Kite*
 
 ### 🔐 Authentication
-![Login Page](screenshots/login.jpg)
+![Login Page](Screenshots/login.jpg)
 
 ---
 
 ### 📊 Trading Dashboard
-![Dashboard](screenshots/ss_1.jpg)
+![Dashboard](Screenshots/ss_1.jpg)
 
 ---
 
 ### 📈 Live Trading Interface
-![Trading Page](screenshots/ss_2.jpg)
+![Trading Page](Screenshots/ss_2.jpg)
 
 ---
 
 ### 💼 Portfolio & PnL Tracking
-![Chart](screenshots/ss_3.jpg)
+![Chart](Screenshots/ss_3.jpg)
 
 ---
 
