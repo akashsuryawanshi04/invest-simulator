@@ -57,7 +57,7 @@
 
 ---
 
-### 💼 Portfolio & PnL Tracking
+### 💼 Chart & PnL Tracking
 ![Chart](Screenshots/ss_3.jpg)
 
 ---
