@@ -41,9 +41,6 @@
 
 > *Dark terminal-gold aesthetic inspired by Bloomberg Terminal & Zerodha Kite*
 
-## 🖥️ Screenshots
-
-> *Dark terminal-gold aesthetic inspired by Bloomberg Terminal & Zerodha Kite*
 
 ### 🔐 Authentication
 ![Login Page](Screenshots/login.jpg)
