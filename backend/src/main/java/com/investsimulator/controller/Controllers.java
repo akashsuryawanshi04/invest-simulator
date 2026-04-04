@@ -1,5 +1,7 @@
 package com.investsimulator.controller;
 
+// Autor = Akash Suryawanshi
+
 import com.investsimulator.dto.*;
 import com.investsimulator.exception.*;
 import com.investsimulator.model.*;
@@ -21,7 +23,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 // ============================================================
-// AuthController — POST /api/auth/signup, /api/auth/login
+// AuthController  —  POST /api/auth/signup, /api/auth/login
 // ============================================================
 @RestController
 @RequestMapping("/api/auth")
