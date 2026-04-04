@@ -1,5 +1,7 @@
 package com.investsimulator.dto;
 
+// Autor = Akash Suryawanshi
+
 import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.List;
