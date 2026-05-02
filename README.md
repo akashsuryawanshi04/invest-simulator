@@ -1,4 +1,4 @@
-# 📈 InvestSimulator — Virtual Trading & Investment Learning Platform
+
 
 <div align="center">
 
